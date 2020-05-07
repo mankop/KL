@@ -24,11 +24,11 @@ public class Controller {
     @FXML
     private TextArea in;
 
-
-    public int dif=0;
-    public int errors=0;
-    public String name = "";
-    public Double last = 0.0;
+    private boolean survival=false;
+    private int dif=0;
+    private int errors=0;
+    private String name = "";
+    private Double last = 0.0;
 
     DecimalFormat f = new DecimalFormat("##.##");
 
@@ -65,6 +65,9 @@ public class Controller {
         this.dif=2;
         System.out.println(dif);
     }
+    public void setSurvival(){
+        survival =!survival;
+    }
 
     public void start() throws IOException {
         List<String> texts = new ArrayList<String>();
@@ -96,7 +99,13 @@ public class Controller {
 
     private void getError() throws IOException {
         if (!in.getText().equals("")){
-            if(out.getText().charAt(in.getText().length()-1) != in.getText().charAt(in.getText().length()-1)){
+            if (survival){
+                stopwatch.stop();
+                System.out.println(stopwatch.getElapsedTime());
+                in.setDisable(true);
+            }
+
+            else if(out.getText().charAt(in.getText().length()-1) != in.getText().charAt(in.getText().length()-1)){
                 System.out.println("err");
                 this.errors+=1;
                 in.setStyle("-fx-border-color: red");
@@ -135,7 +144,7 @@ public class Controller {
         this.name = name;
     }
 
-    public void setHS() throws IOException {
+    private void setHS() throws IOException {
         File f = new File("resources/scores/" + name);
         if(f.exists() && !f.isDirectory()) {
             BufferedReader sc = new BufferedReader(new FileReader("resources/scores/" + name));
@@ -147,7 +156,7 @@ public class Controller {
 
 
     }
-    public void saveSC() throws IOException {
+    private void saveSC() throws IOException {
         if (last < Double.parseDouble(cpm.getText())*100/(errors*3+1)) {
             BufferedWriter w = new BufferedWriter(new FileWriter("resources/scores/" + name));
             w.write(
@@ -166,4 +175,7 @@ public class Controller {
                 * 100
                 / (errors * 3 + 1);
     }
+
+
+
 }
