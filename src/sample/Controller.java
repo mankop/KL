@@ -86,9 +86,17 @@ public class Controller {
                 break;
 
             case 1:
+                BufferedReader sc2 = new BufferedReader(new FileReader("resources/hard"));
+                while ((row = sc2.readLine())!=null)
+                    texts.add(row);
+                out.setText(texts.get((int) (Math.random()*2)));
                 break;
 
             case 2:
+                BufferedReader sc3 = new BufferedReader(new FileReader("resources/insane"));
+                while ((row = sc3.readLine())!=null)
+                    texts.add(row);
+                out.setText(texts.get((int) (Math.random()*2)));
                 break;
 
         }
@@ -144,7 +152,7 @@ public class Controller {
         this.name = name;
     }
 
-    private void setHS() throws IOException {
+    public void setHS() throws IOException {
         File f = new File("resources/scores/" + name);
         if(f.exists() && !f.isDirectory()) {
             BufferedReader sc = new BufferedReader(new FileReader("resources/scores/" + name));
@@ -164,6 +172,7 @@ public class Controller {
                             Double.parseDouble(
                                     cpm.getText())
                                     * 100
+                                    * dif + 1.0
                                     / (errors * 3 + 1)
                     )
             );

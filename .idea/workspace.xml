@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sample/Http.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sample/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="added survival and API">
+      <change afterPath="$PROJECT_DIR$/resources/Insane" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/hard" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/KeyLearn/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KeyLearn/sample/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KeyLearn/sample/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KeyLearn/sample/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KeyLearn/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KeyLearn/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/ez" beforeDir="false" afterPath="$PROJECT_DIR$/resources/ez" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/api" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/api" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/sample.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -222,8 +218,17 @@
       <workItem from="1588761708027" duration="5165000" />
       <workItem from="1588789881956" duration="5548000" />
       <workItem from="1588835858291" duration="1318000" />
-      <workItem from="1588837239151" duration="1066000" />
+      <workItem from="1588837239151" duration="1376000" />
+      <workItem from="1588835236794" duration="328000" />
     </task>
+    <task id="LOCAL-00001" summary="added survival and API">
+      <created>1588838458071</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588838458071</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,5 +250,7 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="added survival and API" />
+    <option name="LAST_COMMIT_MESSAGE" value="added survival and API" />
   </component>
 </project>
