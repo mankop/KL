@@ -42,5 +42,19 @@ public class LoginController {
         Stage stage = (Stage) play.getScene().getWindow();
         stage.close();
     }
-
+    public void PlayOnline() throws IOException {
+        name = player.getText();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("1v1.fxml"));
+        Parent root = loader.load();
+        Controller controller = loader.getController();
+        controller.settName(name);
+        controller.setHS();
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("KL");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setResizable(false);
+        primaryStage.show();
+        Stage stage = (Stage) play.getScene().getWindow();
+        stage.close();
+    }
 }
