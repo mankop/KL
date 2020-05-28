@@ -125,21 +125,21 @@ public class Controller {
             }
         }
         if (out.getText().length() == in.getText().length()){
-            in.setDisable(true);
-            stopwatch.stop();
-            System.out.println(stopwatch.getElapsedTime());
+                in.setDisable(true);
+                stopwatch.stop();
+                System.out.println(stopwatch.getElapsedTime());
 
-            cpm.setText(
-                    f.format(
-                            in.getText()
-                                    .replace(" ", "")
-                                    .length()
-                                    *1.0
-                                    /(stopwatch.getElapsedTime())
-                                    *1000
-                    )
+                cpm.setText(
+                        f.format(
+                                in.getText()
+                                        .replace(" ", "")
+                                        .length()
+                                        *1.0
+                                        /(stopwatch.getElapsedTime())
+                                        *1000
+                        )
 
-            );
+                );
             saveSC();
             setHS();
 
@@ -148,7 +148,7 @@ public class Controller {
     }
 
 
-    public void setName(String name) {
+    public void settName(String name) {
         this.name = name;
     }
 

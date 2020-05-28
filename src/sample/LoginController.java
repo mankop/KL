@@ -32,7 +32,7 @@ public class LoginController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root = loader.load();
         Controller controller = loader.getController();
-        controller.setName(name);
+        controller.settName(name);
         controller.setHS();
         Stage primaryStage = new Stage();
         primaryStage.setTitle("KL");
