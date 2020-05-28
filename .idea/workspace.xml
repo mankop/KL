@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Commented stopwatch, Controller Server, cleaned up">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Stopwatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Stopwatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/LoginController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -272,7 +271,7 @@
       <workItem from="1590604270855" duration="1581000" />
       <workItem from="1590670328489" duration="5752000" />
       <workItem from="1590678708102" duration="2012000" />
-      <workItem from="1590680927777" duration="2597000" />
+      <workItem from="1590680927777" duration="2933000" />
     </task>
     <task id="LOCAL-00001" summary="added survival and API">
       <created>1588838458071</created>
@@ -316,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590683573130</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Commented stopwatch, Controller Server, cleaned up">
+      <created>1590684023975</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1590684023975</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
