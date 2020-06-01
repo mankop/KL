@@ -7,27 +7,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
    <children>
       <Label layoutX="131.0" layoutY="14.0" prefHeight="41.0" prefWidth="112.0" text="KeyLearn" textAlignment="CENTER" textOverrun="CLIP" underline="true" wrapText="true">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="154.0" layoutY="107.0" text="Name">
+      <Label layoutX="155.0" layoutY="87.0" text="Name">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="player" layoutX="78.0" layoutY="155.0" prefHeight="41.0" prefWidth="218.0" style="-fx-border-color: lightblue;">
+      <TextField fx:id="player" layoutX="78.0" layoutY="133.0" prefHeight="41.0" prefWidth="218.0" style="-fx-border-color: lightblue;">
          <effect>
             <Glow />
          </effect>
       </TextField>
-      <Button fx:id="play" layoutX="102.0" layoutY="234.0" mnemonicParsing="false" onAction="#Play" prefHeight="53.0" prefWidth="168.0" style="-fx-background-color: lightblue;" text="Play">
+      <Button fx:id="play" layoutX="103.0" layoutY="207.0" mnemonicParsing="false" onAction="#Play" prefHeight="53.0" prefWidth="168.0" style="-fx-background-color: lightblue;" text="Play">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
+      <Button fx:id="play1" layoutX="103.0" layoutY="346.0" mnemonicParsing="false" onAction="#PlayOnline" prefHeight="53.0" prefWidth="168.0" style="-fx-background-color: lightblue;" text="Play Online">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
+      <Label layoutX="174.0" layoutY="292.0" text="OR">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

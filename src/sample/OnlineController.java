@@ -31,7 +31,7 @@ public class OnlineController extends Thread {
     private int text = 0;
     private int errors=0;
     private int index = 0;
-    private String name = "";
+    private String name = "online";
     private Double last = 0.0;
     private boolean survival=false;
     private String[] parsedMassage;
@@ -86,6 +86,7 @@ public class OnlineController extends Thread {
         } catch (SocketException e) {
             e.printStackTrace();
         }
+        System.out.println('a');
         while (true) {
             try {
                 ds.receive(dp);
@@ -94,19 +95,20 @@ public class OnlineController extends Thread {
             }
             String sprava = new String(dp.getData(),0, dp.getLength());
             System.out.println(sprava);
-
+            System.out.println(sprava);
+            System.out.println(sprava);
             parsedMassage = sprava.split(" ");
-
             index = Integer.parseInt(parsedMassage[0]);
             dif = Integer.parseInt(parsedMassage[1]);
             text = Integer.parseInt(parsedMassage[2]);
+            break;
         }
     }
 
 
     public void initialize() throws IOException {
         setHS();
-        getData();
+
         in.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
@@ -140,6 +142,11 @@ public class OnlineController extends Thread {
     }
 
     public void start() {
+        try {
+            getData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         List<String> texts = new ArrayList<String>();
         String row = null;
 
@@ -163,7 +170,7 @@ public class OnlineController extends Thread {
                     }
                     texts.add(row);
                 }
-                out.setText(texts.get((int) (Math.random()*2)));
+                out.setText(texts.get(text));
                 break;
 
             case 1:
@@ -180,10 +187,10 @@ public class OnlineController extends Thread {
                         e.printStackTrace();
                     }
                     texts.add(row);
-                }
-                out.setText(texts.get((int) (Math.random()*2)));
-                break;
 
+                }
+                out.setText(texts.get(text));
+                break;
             case 2:
                 BufferedReader sc3 = null;
                 try {
@@ -199,7 +206,7 @@ public class OnlineController extends Thread {
                     }
                     texts.add(row);
                 }
-                out.setText(texts.get((int) (Math.random()*2)));
+                out.setText(texts.get(text));
                 break;
 
             default:
@@ -229,7 +236,7 @@ public class OnlineController extends Thread {
                 in.setStyle("-fx-border-color: black");
             }
         }
-        if (out.getText().length() == in.getText().length()){
+        if (out.getText().length() == in.getText().length() && out.getText().equals(in.getText())){
             in.setDisable(true);
             stopwatch.stop();
             System.out.println(stopwatch.getElapsedTime());
@@ -247,6 +254,39 @@ public class OnlineController extends Thread {
             );
             saveSC();
             setHS();
+
+
+            InetAddress adresa = InetAddress.getByName("127.0.0.1");
+            int port = 8000;
+            byte buffer[] = new byte[1024];
+            DatagramPacket dp2 = new DatagramPacket(buffer, buffer.length);
+            DatagramSocket ds2 = new DatagramSocket();
+            UDPEchoReader reader = new UDPEchoReader(ds2);
+            String mojaSprava = "score: 0 " + cpm.getText();
+            dp2 = new DatagramPacket(mojaSprava.getBytes(),mojaSprava.length(),adresa, port);
+            ds2.send(dp2);
+            try {
+                ds2 = new DatagramSocket(port+2);
+            } catch (SocketException e) {
+                e.printStackTrace();
+            }
+            while (true) {
+                try {
+                    ds2.receive(dp2);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                String prijataSprava = new String(dp2.getData(), 0,dp2.getLength());
+                System.out.println(prijataSprava);
+                if (prijataSprava.equals("lose"))
+                {
+                    System.out.println("u loose");
+                }
+                else  {
+                    System.out.println("u win");
+                }
+                break;
+            }
 
         }
 

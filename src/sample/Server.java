@@ -55,21 +55,23 @@ public class Server extends Thread{
                     object.add(a);
                     send = Integer.toString(object.size()-1);
                     DatagramPacket dps = new DatagramPacket(send.getBytes(),send.length(),dp.getAddress(), port+1);
-                    if (object.size() >=2){
+                    if (object.size() >=1){
                         dif = getRandom(3);
+                        System.out.println(dif);
                         text = getRandom(2);
+                        System.out.println(text);
                         send += " " + Integer.toString(dif) + " " + Integer.toString(text);
                         dps = new DatagramPacket(send.getBytes(),send.length(),dp.getAddress(), port+1);
                         ds.send(dps);
-                        dps = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(1).getIp()), port);
-                         ds.send(dps);
+                        /*dps = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(1).getIp()), port);
+                         ds.send(dps);*/
                     }
                     break;
 
                 case "score:":
                     //parsing players score
                     object.get(Integer.parseInt(what[1])).setScore(what[2]);
-                    if (object.size()>=2){
+                    if (object.size()>=1){
                         DatagramPacket dpsc = new DatagramPacket(send.getBytes(),send.length(),dp.getAddress(), port+1);
                         if (Integer.parseInt(object.get(0).getScore()) < Integer.parseInt(object.get(1).getScore())){
                             dpsc = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(0).getIp()), port+1);
@@ -79,6 +81,18 @@ public class Server extends Thread{
                             send = "win";
                             ds.send(dpsc);
                         }
+                        else {
+                            dpsc = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(0).getIp()), port+1);
+                            send = "win";
+                            ds.send(dpsc);
+                            dpsc = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(1).getIp()), port+1);
+                            send = "lose";
+                            ds.send(dpsc);
+                        }
+                       /* send = "lose";
+                        dpsc = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(0).getIp()), port+2);
+                        ds.send(dpsc);
+                        System.out.println("lose");*/
                        /* DatagramPacket dpsc = new DatagramPacket(send.getBytes(),send.length(),dp.getAddress(), port+1);
                         send = object.get(0).toString();
                         ds.send(dpsc);

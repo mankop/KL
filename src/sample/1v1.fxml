@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+        <?import javafx.scene.control.Button?>
+        <?import javafx.scene.control.Label?>
+        <?import javafx.scene.control.TextArea?>
+        <?import javafx.scene.layout.AnchorPane?>
+        <?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.OnlineController">
+<children>
+   <Label fx:id="out" layoutX="12.0" layoutY="89.0" prefHeight="67.0" prefWidth="577.0" text="Hit Start to start..." textFill="#1f1fdb">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Label>
+   <TextArea fx:id="in" layoutX="12.0" layoutY="172.0" prefHeight="85.0" prefWidth="577.0" style="-fx-border-color: black;" />
+   <Label fx:id="cpm" layoutX="60.0" layoutY="291.0" prefHeight="25.0" prefWidth="79.0" text="CPM" textFill="WHITE">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="errOut" layoutX="457.0" layoutY="291.0" prefHeight="25.0" prefWidth="79.0" text="Errors" textFill="WHITE">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Label>
+   <Button layoutX="265.0" layoutY="316.0" mnemonicParsing="false" onAction="#start" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: white;" text="Start" textFill="RED">
+      <font>
+         <Font name="Arial Bold" size="18.0" />
+      </font>
+   </Button>
+   <Label layoutX="231.0" layoutY="70.0" prefHeight="39.0" prefWidth="144.0" text="Text to Write" textAlignment="RIGHT" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="22.0" />
+      </font>
+   </Label>
+   <Label layoutX="281.0" layoutY="11.0" prefHeight="56.0" prefWidth="48.0" text="KL" textAlignment="CENTER" textFill="#0700ff">
+      <font>
+         <Font size="39.0" />
+      </font>
+   </Label>
+   <Label fx:id="hs" layoutX="482.0" layoutY="31.0" text="HS:" textFill="WHITE">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font>
+   </Label>
+   <Label fx:id="hs" layoutX="525.0" layoutY="31.0" text="XX" textFill="RED">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+</children>
+</AnchorPane>

@@ -70,12 +70,12 @@ public class LoginController {
 
         //geting it's controller
 
-        Controller controller = loader.getController();
+      /*  Controller controller = loader.getController();
 
         //parsing anem var using settName method in Controller
 
         controller.settName(name);
-        controller.setHS();
+        controller.setHS();*/
 
         //Starting new window
 
