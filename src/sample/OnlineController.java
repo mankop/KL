@@ -3,8 +3,12 @@ package sample;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.*;
@@ -15,6 +19,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class OnlineController extends Thread {
+
+    //all FXML objects initialized
 
     @FXML
     private Label hs;
@@ -27,19 +33,23 @@ public class OnlineController extends Thread {
     @FXML
     private Label errOut;
 
+    //all vars initialized
+
     private int dif=0;
     private int text = 0;
     private int errors=0;
     private int index = 0;
     private String name = "online";
     private Double last = 0.0;
-    private boolean survival=false;
     private String[] parsedMassage;
+    private FXMLLoader loader;
+
+    //setting stopwatch and format vars
 
     Stopwatch stopwatch = new Stopwatch();
     DecimalFormat f = new DecimalFormat("##.##");
 
-
+    //setting udp listener
 
     public static class UDPEchoReader extends Thread {
         public boolean active;
@@ -66,37 +76,37 @@ public class OnlineController extends Thread {
         }
 
     }
+
+    //requesting data from server
+
     public void getData() throws IOException {
+
         int port = 8000;
-        Scanner sc = new Scanner(System.in);
+        String mojaSprava = "name: meno";
         DatagramSocket ds = new DatagramSocket();
         UDPEchoReader reader = new UDPEchoReader(ds);
         InetAddress adresa = InetAddress.getByName("127.0.0.1");
+
         reader.setDaemon(true);
         reader.start();
-       /* String mojaSprava = "test";
-        DatagramPacket dp = new DatagramPacket(mojaSprava.getBytes(),mojaSprava.length(),adresa, port);
-        ds.send(dp);*/
 
-        String mojaSprava = "name: a";
         DatagramPacket dp = new DatagramPacket(mojaSprava.getBytes(),mojaSprava.length(),adresa, port);
         ds.send(dp);
+
         try {
             ds = new DatagramSocket(port+1);
         } catch (SocketException e) {
             e.printStackTrace();
         }
-        System.out.println('a');
+
         while (true) {
             try {
                 ds.receive(dp);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             String sprava = new String(dp.getData(),0, dp.getLength());
-            System.out.println(sprava);
-            System.out.println(sprava);
-            System.out.println(sprava);
             parsedMassage = sprava.split(" ");
             index = Integer.parseInt(parsedMassage[0]);
             dif = Integer.parseInt(parsedMassage[1]);
@@ -136,9 +146,6 @@ public class OnlineController extends Thread {
     public void dif2(){
         this.dif=2;
         System.out.println(dif);
-    }
-    public void setSurvival(){
-        survival =!survival;
     }
 
     public void start() {
@@ -213,29 +220,40 @@ public class OnlineController extends Thread {
                 throw new IllegalStateException("Unexpected value: " + dif);
         }
 
+        //starting stapwatch
+
         stopwatch.start();
 
     }
 
     private void getError() throws IOException {
-        if (!in.getText().equals("")){
-            if (survival){
-                stopwatch.stop();
-                System.out.println(stopwatch.getElapsedTime());
-                in.setDisable(true);
-            }
 
-            else if(out.getText().charAt(in.getText().length()-1) != in.getText().charAt(in.getText().length()-1)){
+        //checking if input wasnt just reseted
+
+        if (!in.getText().equals("")){
+
+            //checking if mistake was made
+
+            if(out.getText().charAt(in.getText().length()-1) != in.getText().charAt(in.getText().length()-1)){
+
+                //adding 1 to errors, displaying them and setting red border
+
                 System.out.println("err");
                 this.errors+=1;
                 in.setStyle("-fx-border-color: red");
                 errOut.setText(Integer.toString(errors));
 
             }
+
+            //if no mistake was made setting border to black
+
             else {
                 in.setStyle("-fx-border-color: black");
             }
         }
+
+        //calcing and setting CPM
+
         if (out.getText().length() == in.getText().length() && out.getText().equals(in.getText())){
             in.setDisable(true);
             stopwatch.stop();
@@ -252,9 +270,14 @@ public class OnlineController extends Thread {
                     )
 
             );
+
+            //saving and setting HS
+
             saveSC();
             setHS();
 
+
+            //sending score to server
 
             InetAddress adresa = InetAddress.getByName("127.0.0.1");
             int port = 8000;
@@ -265,6 +288,9 @@ public class OnlineController extends Thread {
             String mojaSprava = "score: 0 " + cpm.getText();
             dp2 = new DatagramPacket(mojaSprava.getBytes(),mojaSprava.length(),adresa, port);
             ds2.send(dp2);
+
+            //starting listener for response
+
             try {
                 ds2 = new DatagramSocket(port+2);
             } catch (SocketException e) {
@@ -276,29 +302,69 @@ public class OnlineController extends Thread {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                //parsing response
+
                 String prijataSprava = new String(dp2.getData(), 0,dp2.getLength());
                 System.out.println(prijataSprava);
+
+                //checking if winner or looser
+
                 if (prijataSprava.equals("lose"))
                 {
-                    System.out.println("u loose");
+
+                    //loading next fxml window
+
+                   loader = new FXMLLoader(getClass().getResource("Loser.fxml"));
+                    Parent root = loader.load();
+
+                    //Starting new window
+
+                    Stage primaryStage = new Stage();
+                    primaryStage.setTitle("KL");
+                    primaryStage.setScene(new Scene(root, 600, 400));
+                    primaryStage.setResizable(false);
+
+                    //opening new window
+
+                    primaryStage.show();
+                    Stage stage = (Stage) hs.getScene().getWindow();
+                    stage.close();
                 }
                 else  {
-                    System.out.println("u win");
+                    //loading next fxml window
+
+                   loader = new FXMLLoader(getClass().getResource("winner.fxml"));
+
                 }
+                Parent root = loader.load();
+
+                //Starting new window
+
+                Stage primaryStage = new Stage();
+                primaryStage.setTitle("KL");
+                primaryStage.setScene(new Scene(root, 600, 400));
+                primaryStage.setResizable(false);
+
+                //opening new window
+
+                primaryStage.show();
+                Stage stage = (Stage) hs.getScene().getWindow();
+                stage.close();
                 break;
             }
 
         }
 
     }
-    public void settName(String meno){
-        this.name = meno;
-    }
+
+    //method for displaying HS
+
 
     public void setHS() throws IOException {
         File f = new File("resources/scores/" + name);
         if(f.exists() && !f.isDirectory()) {
-            BufferedReader sc = new BufferedReader(new FileReader("resources/scores/" + name));
+            BufferedReader sc = new BufferedReader(new FileReader("resources/scores/Online" + name));
             hs.setText(sc.readLine());
             sc.close();
         }
@@ -308,9 +374,12 @@ public class OnlineController extends Thread {
 
 
     }
+
+    //method for saving HS
+
     private void saveSC() throws IOException {
         if (last < Double.parseDouble(cpm.getText())*100/(errors*3+1)) {
-            BufferedWriter w = new BufferedWriter(new FileWriter("resources/scores/" + name));
+            BufferedWriter w = new BufferedWriter(new FileWriter("resources/scores/Online" + name));
             w.write(
                     f.format(
                             Double.parseDouble(
@@ -328,7 +397,5 @@ public class OnlineController extends Thread {
                 * 100
                 / (errors * 3 + 1);
     }
-
-
 
 }

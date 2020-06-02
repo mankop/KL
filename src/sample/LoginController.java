@@ -70,13 +70,6 @@ public class LoginController {
 
         //geting it's controller
 
-      /*  Controller controller = loader.getController();
-
-        //parsing anem var using settName method in Controller
-
-        controller.settName(name);
-        controller.setHS();*/
-
         //Starting new window
 
         Stage primaryStage = new Stage();

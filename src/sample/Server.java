@@ -34,13 +34,15 @@ public class Server extends Thread{
 
         //listening fot messages
 
-
         while (true){
             try {
                 ds.receive(dp);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            //parsing message
+
             String sprava = new String(dp.getData(),0, dp.getLength());
             System.out.println(sprava);
             String[] what = sprava.split(" ");
@@ -50,28 +52,39 @@ public class Server extends Thread{
             switch (what[0]){
 
                 case "name:":
+
                     //parsing players score and ip Add, sending them set diff and text to write with unique index so they can be identified
+
                     Player a = new Player(what[1], dp.getAddress().toString().substring(1));
                     object.add(a);
                     send = Integer.toString(object.size()-1);
                     DatagramPacket dps = new DatagramPacket(send.getBytes(),send.length(),dp.getAddress(), port+1);
-                    if (object.size() >=1){
+                    if (object.size() >=2){
+
+                        //generating dif and text
+
                         dif = getRandom(3);
-                        System.out.println(dif);
                         text = getRandom(2);
-                        System.out.println(text);
+
+                        //sending generated values to clients
+
                         send += " " + Integer.toString(dif) + " " + Integer.toString(text);
                         dps = new DatagramPacket(send.getBytes(),send.length(),dp.getAddress(), port+1);
                         ds.send(dps);
-                        /*dps = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(1).getIp()), port);
-                         ds.send(dps);*/
+                        dps = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(1).getIp()), port);
+                         ds.send(dps);
                     }
                     break;
 
                 case "score:":
                     //parsing players score
                     object.get(Integer.parseInt(what[1])).setScore(what[2]);
-                    if (object.size()>=1){
+
+                    //checking if both players already send their score
+
+                    //if yes compare them end send final result
+
+                    if (object.size()>=2){
                         DatagramPacket dpsc = new DatagramPacket(send.getBytes(),send.length(),dp.getAddress(), port+1);
                         if (Integer.parseInt(object.get(0).getScore()) < Integer.parseInt(object.get(1).getScore())){
                             dpsc = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(0).getIp()), port+1);
@@ -89,16 +102,10 @@ public class Server extends Thread{
                             send = "lose";
                             ds.send(dpsc);
                         }
-                       /* send = "lose";
-                        dpsc = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(0).getIp()), port+2);
-                        ds.send(dpsc);
-                        System.out.println("lose");*/
-                       /* DatagramPacket dpsc = new DatagramPacket(send.getBytes(),send.length(),dp.getAddress(), port+1);
-                        send = object.get(0).toString();
-                        ds.send(dpsc);
-                        dpsc = new DatagramPacket(send.getBytes(),send.length(),dp.getAddress(), port+1);
-                        send = object.get(1).toString();
-                        ds.send(dpsc);*/
+
+                        //reset server
+
+                        object.clear();
                     }
                     break;
 
@@ -112,6 +119,9 @@ public class Server extends Thread{
         }
 
     }
+
+    //void for generating random value
+
     public static int getRandom(int max){
         return (int) (Math.random()*max);
     }
