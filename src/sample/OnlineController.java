@@ -305,7 +305,7 @@ public class OnlineController extends Thread {
 
                 //parsing response
 
-                String prijataSprava = new String(dp2.getData(), 0,dp2.getLength());
+                String prijataSprava = new String(dp2.getData(),0,dp2.getLength());
                 System.out.println(prijataSprava);
 
                 //checking if winner or looser
@@ -362,7 +362,7 @@ public class OnlineController extends Thread {
 
 
     public void setHS() throws IOException {
-        File f = new File("resources/scores/" + name);
+        File f = new File("resources/scores/Online" + name);
         if(f.exists() && !f.isDirectory()) {
             BufferedReader sc = new BufferedReader(new FileReader("resources/scores/Online" + name));
             hs.setText(sc.readLine());
