@@ -145,7 +145,7 @@ public class Controller {
 
     private void getError() throws IOException {
         if (!in.getText().equals("")){
-            if (survival){
+            if (survival && out.getText().charAt(in.getText().length()-1) != in.getText().charAt(in.getText().length()-1)){
                 stopwatch.stop();
                 System.out.println(stopwatch.getElapsedTime());
                 in.setDisable(true);

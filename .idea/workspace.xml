@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Final version">
-      <change afterPath="$PROJECT_DIR$/resources/scores/Onlineonline" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Final version fixed blocked ports">
+      <change afterPath="$PROJECT_DIR$/resources/scores/a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KeyLearn/sample/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KeyLearn/sample/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KeyLearn/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KeyLearn/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KeyLearn/sample/OnlineController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KeyLearn/sample/OnlineController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KeyLearn/sample/OnlineController$UDPEchoReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KeyLearn/sample/OnlineController$UDPEchoReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KeyLearn/sample/OnlineController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KeyLearn/sample/OnlineController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/KeyLearn/sample/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KeyLearn/sample/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/OnlineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/OnlineController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Server.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -288,7 +283,9 @@
       <workItem from="1590746022684" duration="4861000" />
       <workItem from="1591120937885" duration="2221000" />
       <workItem from="1591208149447" duration="2619000" />
-      <workItem from="1591259315533" duration="4158000" />
+      <workItem from="1591259315533" duration="4848000" />
+      <workItem from="1591290329989" duration="110000" />
+      <workItem from="1591293066152" duration="911000" />
     </task>
     <task id="LOCAL-00001" summary="added survival and API">
       <created>1588838458071</created>
@@ -353,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591122529930</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Final version fixed blocked ports">
+      <created>1591271417539</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1591271417539</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,6 +386,7 @@
     <MESSAGE value="Commented stopwatch, Controller Server, cleaned up" />
     <MESSAGE value="Commented LoginController" />
     <MESSAGE value="Final version" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final version" />
+    <MESSAGE value="Final version fixed blocked ports" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final version fixed blocked ports" />
   </component>
 </project>

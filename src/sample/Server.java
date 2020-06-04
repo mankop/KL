@@ -85,7 +85,7 @@ public class Server extends Thread{
                     //if yes compare them end send final result
 
                     if (object.size()>=1){
-                        DatagramPacket dpsc = new DatagramPacket(send.getBytes(),send.length(),dp.getAddress(), port+1);
+                        DatagramPacket dpsc;
                         if (Double.parseDouble(object.get(0).getScore()) < Double.parseDouble(object.get(1).getScore())){
                             dpsc = new DatagramPacket(send.getBytes(),send.length(), InetAddress.getByName(object.get(0).getIp()), port+2);
                             send = "lose";
